@@ -21,12 +21,12 @@ public class Main {
                 System.out.printf("제목 : ");
                 String title = sc.nextLine();
                 System.out.printf("내용 : ");
-                String contents = sc.nextLine();
+                String body = sc.nextLine();
 
                 Article article = new Article();
-                article.id = 1;
-                article.title = "제목1";
-                article.body = "내용1";
+                article.id = id;
+                article.title = title;
+                article.body = body;
                 System.out.println("생성된 게시물 객체 : " + article);
 
                 System.out.printf("%d번 게시물이 등록되었습니다.\n", id);
@@ -45,4 +45,9 @@ class Article{
     int id;
     String title;
     String body;
+
+    @Override
+    public String toString(){
+        return String.format("id: %d, title: %s, body: %s", id, title, body);
+    }
 }
