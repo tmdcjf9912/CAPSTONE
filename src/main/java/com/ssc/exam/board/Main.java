@@ -8,6 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Article lastArticle = null;
         int articleLastId = 0;
+
         ArrayList<Article> articles = new ArrayList<Article>();
         articles.add(new Article(1,"제목1", "내용1"));
         articles.add(new Article(2,"제목2", "내용2"));
@@ -15,7 +16,6 @@ public class Main {
 
         System.out.println("==게시판 v 0.1==");
         System.out.println("==프로그램 시작==");
-        int id = 1;
 
         while(true){
             System.out.printf("입력)");
@@ -23,6 +23,19 @@ public class Main {
 
             if(cmd.equals("exit")){
                 break;
+            }else if (cmd.equals("/detail")) {
+                if (lastArticle == null){
+                    System.out.println("게시물이 존재하지않습니다.");
+                    continue;
+                }
+
+                Article article = lastArticle;
+
+                System.out.println("==마지막 게시물==");
+                System.out.printf("번호: %d\n", article.id);
+                System.out.printf("제목: %s\n", article.title);
+                System.out.printf("내용: %s\n", article.body);
+
             }else if (cmd.equals("/list")){
                 System.out.println("==게시물 리스트==");
                 System.out.println("---------------");
@@ -39,11 +52,15 @@ public class Main {
                 System.out.printf("내용 : ");
                 String body = sc.nextLine();
 
+                int id = articleLastId + 1;
+                articleLastId++;
+
                 Article article = new Article(id, title, body);
+                lastArticle = article;
+
                 System.out.println("생성된 게시물 객체 : " + article);
 
                 System.out.printf("%d번 게시물이 등록되었습니다.\n", id);
-                id++;
             }else{
                 System.out.printf("입력된 명령어 : %s\n", cmd);
             }
