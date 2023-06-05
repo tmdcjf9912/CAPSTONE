@@ -13,12 +13,13 @@ public class Main {
             System.out.printf("입력: ");
             String cmd = sc.nextLine();
 
-            if(cmd.equals("exit")){
+            if(cmd.equals("/exit")){
                 break;
             } else if(cmd.equals("/write")){
+                System.out.println("게시물 등록");
                 System.out.printf("제목입력: ");
                 String title = sc.nextLine();
-                System.out.printf("제목입력: ");
+                System.out.printf("내용입력: ");
                 String body = sc.nextLine();
 
                 Write wr = new Write(id,title,body);
@@ -28,7 +29,10 @@ public class Main {
             }else{
                 System.out.printf("입력한 명령: %s\n", cmd);
             }
+
         }
+        System.out.println("프로그램 종료");
+        sc.close();
     }
 }
 
