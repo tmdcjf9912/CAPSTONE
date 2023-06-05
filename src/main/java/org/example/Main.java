@@ -1,19 +1,50 @@
 package org.example;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Ctrl+1 with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        System.out.println("프로그램 시작");
+        Scanner sc = new Scanner(System.in);
 
-        // Press Alt+Shift+X or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        int id=1;
 
-            // Press Alt+Shift+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+Shift+B.
-            System.out.println("i = " + i);
+        while(true){
+            System.out.printf("입력: ");
+            String cmd = sc.nextLine();
+
+            if(cmd.equals("exit")){
+                break;
+            } else if(cmd.equals("/write")){
+                System.out.printf("제목입력: ");
+                String title = sc.nextLine();
+                System.out.printf("제목입력: ");
+                String body = sc.nextLine();
+
+                Write wr = new Write(id,title,body);
+                System.out.println(wr);
+                System.out.printf("%s번째 글입니다.\n", id);
+                id++;
+            }else{
+                System.out.printf("입력한 명령: %s\n", cmd);
+            }
         }
+    }
+}
+
+class Write{
+    int id;
+    String title;
+    String body;
+
+    public Write(int id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("id: %d, title: %s, body: %s", id, title, body);
     }
 }
